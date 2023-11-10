@@ -72,13 +72,13 @@
 #define ALR_MODE_TIMEOUT_SEC            (5u)
 
 /* Scan time in microseconds */
-#define ACTIVE_MODE_FRAME_SCAN_TIME     (37u)
+#define ACTIVE_MODE_FRAME_SCAN_TIME     (5403u)
 
 /* Active mode Processing time in us ~= 23us with Serial LED and Tuner disabled*/
 #define ACTIVE_MODE_PROCESS_TIME        (23u)
 
 /* Scan time in microseconds */
-#define ALR_MODE_FRAME_SCAN_TIME        (37u)
+#define ALR_MODE_FRAME_SCAN_TIME        (5403u)
 
 /* ALR mode Processing time in us ~= 23us with Serial LED and Tuner disabled*/
 #define ALR_MODE_PROCESS_TIME           (23u)
@@ -117,6 +117,7 @@
 
 #define MINIMUM_TIMER                   (TIME_IN_US / ILO_FREQ)
 
+/* 128Hz Refresh rate in Active mode */
 #if ((TIME_IN_US / ACTIVE_MODE_REFRESH_RATE) > (ACTIVE_MODE_FRAME_SCAN_TIME + ACTIVE_MODE_PROCESS_TIME))
     #define ACTIVE_MODE_TIMER           (TIME_IN_US / ACTIVE_MODE_REFRESH_RATE - \
                                         (ACTIVE_MODE_FRAME_SCAN_TIME + ACTIVE_MODE_PROCESS_TIME))
@@ -138,8 +139,8 @@
 #define TIMEOUT_RESET                   (0u)
 
 #if ENABLE_RUN_TIME_MEASUREMENT
-    #define SYS_TICK_INTERVAL           (0x00FFFFFF)
-    #define TIME_PER_TICK_IN_US         ((float)1/CY_CAPSENSE_CPU_CLK)*TIME_IN_US
+    #define SYS_TICK_MAX_INTERVAL       (0x00FFFFFF)
+    #define TIME_PER_TICK_IN_US         ((float)TIME_IN_US/CY_CAPSENSE_CPU_CLK)
 #endif
 
 /*****************************************************************************
@@ -175,7 +176,6 @@ static void Ezi2cIsr(void);
 static void InitializeCapsenseTuner(void);
 
 #if ENABLE_RUN_TIME_MEASUREMENT
-static void InitSysTick();
 static void StartRuntimeMeasurement();
 static uint32_t StopRuntimeMeasurement();
 #endif
@@ -193,7 +193,6 @@ cy_en_syspm_status_t DeepSleepCallback(cy_stc_syspm_callback_params_t *callbackP
 /*******************************************************************************
 * Global Definitions
 *******************************************************************************/
-
 /* Variables holds the current low power state [ACTIVE, ALR or WOT] */
 APPLICATION_STATE appState;
 
@@ -266,7 +265,9 @@ cy_stc_syspm_callback_t deepSleepCb =
     .order          = 2
 };
 
+#if ENABLE_RUN_TIME_MEASUREMENT
 volatile uint32_t processTime = 0u;
+#endif
 
 /*******************************************************************************
 * Function Name: main
@@ -303,7 +304,7 @@ int main(void)
     result = cybsp_init() ;
 
 #if ENABLE_RUN_TIME_MEASUREMENT
-    InitSysTick();
+    Cy_SysTick_Init (CY_SYSTICK_CLOCK_SOURCE_CLK_CPU ,SYS_TICK_MAX_INTERVAL);
 #endif
 
     /* Board init failed. Stop program execution */
@@ -800,18 +801,6 @@ static void MeasureSensorCapacitance(uint32_t *sensorCapacitance)
 
 #if ENABLE_RUN_TIME_MEASUREMENT
 /*******************************************************************************
-* Function Name: InitSysTick
-********************************************************************************
-* Summary:
-*  initializes the system tick with highest possible value to start counting down.
-*
-*******************************************************************************/
-static void InitSysTick()
-{
-    Cy_SysTick_Init (CY_SYSTICK_CLOCK_SOURCE_CLK_CPU ,0x00FFFFFF);
-}
-
-/*******************************************************************************
 * Function Name: StartRuntimeMeasurement
 ********************************************************************************
 * Summary:
@@ -837,7 +826,7 @@ static uint32_t StopRuntimeMeasurement()
     uint32_t ticks;
     uint32_t runTime;
     ticks = Cy_SysTick_GetValue();
-    ticks = (SYS_TICK_INTERVAL - Cy_SysTick_GetValue());
+    ticks = (SYS_TICK_MAX_INTERVAL - Cy_SysTick_GetValue());
     runTime = (ticks * TIME_PER_TICK_IN_US);
     return runTime;
 }
@@ -869,7 +858,7 @@ void UpdateLeds(void)
 
     // /* Initialize LED values */
     ledContext.serialLedData[LED1].green = 0u;
-    ledContext.serialLedData[LED2].blue = 0u;
+    ledContext.serialLedData[LED1].blue = 0u;
     ledContext.serialLedData[LED3].red = 0u;
 
     /* LED3 (RED) Turns on when Liquid is detected */
@@ -895,10 +884,10 @@ void UpdateLeds(void)
         else if(prox_status >= TOUCH_STATE)
         {
             /* LED1 (GREEN) Turns on when proximity is detected */
-            ledContext.serialLedData[LED1].green = SERIAL_LED_BRIGHTNESS_MAX;
+            ledContext.serialLedData[LED1].green = 0;
 
             /* LED2 (BLUE) Turns on when touch is detected */
-            ledContext.serialLedData[LED2].blue = SERIAL_LED_BRIGHTNESS_MAX;
+            ledContext.serialLedData[LED1].blue = SERIAL_LED_BRIGHTNESS_MAX;
         }
     }
 

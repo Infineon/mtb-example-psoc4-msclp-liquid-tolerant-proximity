@@ -22,7 +22,7 @@
         <Property id="RAW_COUNT_MODE" value="SATURATE"/>
         <Property id="MOD_CLK_DIVIDER" value="2"/>
         <Property id="NUM_CHOP_CYCLES" value="_1"/>
-        <Property id="REGULAR_RC_IIR_FILTER_EN" value="true"/>
+        <Property id="REGULAR_RC_IIR_FILTER_EN" value="false"/>
         <Property id="REGULAR_IIR_RC_N" value="128"/>
         <Property id="REGULAR_RC_MEDIAN_FILTER_EN" value="false"/>
         <Property id="REGULAR_RC_AVERAGE_FILTER_EN" value="false"/>
@@ -94,7 +94,7 @@
         <Property id="CSD_CDAC_REF_MODE" value="AUTO"/>
         <Property id="CSD_CDAC_DITHER_EN" value="true"/>
         <Property id="LP_CSD_AUTOTUNE" value="DISABLE"/>
-        <Property id="CSD_TOTAL_SHIELD_COUNT" value="10"/>
+        <Property id="CSD_TOTAL_SHIELD_COUNT" value="6"/>
         <Property id="CSD_SHIELD_MODE" value="ACTIVE"/>
         <Property id="CSD_CALIBRATION_ERROR" value="10"/>
         <Property id="CSD_R_CONST" value="1000"/>
@@ -134,7 +134,7 @@
                 <Property id="CLK_SOURCE_AUTO_SEL_MODE" value="STRONG"/>
                 <Property id="NUM_SUBCONVERSIONS" value="2367"/>
                 <Property id="CIC_RATE" value="255"/>
-                <Property id="CIC_SHIFT" value="_8"/>
+                <Property id="CIC_SHIFT" value="AUTO"/>
                 <Property id="ROW_CIC_SHIFT" value="AUTO"/>
                 <Property id="CDAC_REF0" value="10"/>
                 <Property id="ROW_CDAC_REF0" value="0"/>
@@ -148,7 +148,7 @@
                 <Property id="MP_TX_ORDER" value="1"/>
                 <Property id="MP_ROW_ORDER" value="1"/>
                 <Property id="FINGER_TH" value="7168"/>
-                <Property id="PROX_TOUCH_TH" value="600"/>
+                <Property id="PROX_TOUCH_TH" value="750"/>
                 <Property id="NOISE_TH" value="200"/>
                 <Property id="NNOISE_TH" value="200"/>
                 <Property id="LOW_BSLN_RST" value="65535"/>
@@ -352,9 +352,9 @@
                 <Property id="LFSR_RANGE" value="AUTO"/>
                 <Property id="LFSR_DITHER_LIMIT" value="10"/>
                 <Property id="CLK_SOURCE_AUTO_SEL_MODE" value="STRONG"/>
-                <Property id="NUM_SUBCONVERSIONS" value="2367"/>
+                <Property id="NUM_SUBCONVERSIONS" value="255"/>
                 <Property id="CIC_RATE" value="255"/>
-                <Property id="CIC_SHIFT" value="_8"/>
+                <Property id="CIC_SHIFT" value="AUTO"/>
                 <Property id="ROW_CIC_SHIFT" value="AUTO"/>
                 <Property id="CDAC_REF0" value="32"/>
                 <Property id="ROW_CDAC_REF0" value="32"/>

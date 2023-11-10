@@ -1,8 +1,8 @@
 # PSoC&trade; 4: MSCLP CAPSENSE&trade; Liquid Tolerant Proximity Sensing
 
-This code example demonstrates an implementation of a robust Liquid-Tolerant proximity sensing application to detect a target (a hand) at a distance of up to 35 mm. It demonstrates recommended liquid tolerance techniques and adjustments of tuning parameters. This example uses a 5th-generation low-power CAPSENSE&trade; (MSCLP) proximity widget, implemented on PSoC&trade; 4000T CAPSENSE&trade; Evaluation Kit (`CY8CKIT-040T`).
+This code example demonstrates an implementation of a robust Liquid-Tolerant proximity sensing application to detect a target (a hand) at a distance of up to 35 mm. It demonstrates recommended liquid tolerance techniques and adjustments of tuning parameters. This example uses a 5th-generation low-power CAPSENSE&trade; (MSCLP) proximity widget, implemented on PSoC&trade; 4000T CAPSENSE&trade; Evaluation Kit (`CY8CKIT-040T`) to demonstrate low power mode.
 
-This code example also demonstrates how to use a guard sensor widget to detect the presence of liquid using the CSX sensing technique. The term **Liquid tolerance** in this case includes the following scenarios only:
+This code example also demonstrates how to use a 'guard sensor' to detect the presence of liquid using the CSX sensing technique. The term **Liquid tolerance** in this case includes following scenarios only:
 
 Scenario          | System Response  |
 :-----------------| :----------------|
@@ -15,7 +15,7 @@ The resulting solution in this implementation can effectively be called as 'Spla
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc4-msclp-liquid-tolerant-proximity)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgyMjgiLCJTcGVjIE51bWJlciI6IjAwMi0zODIyOCIsIkRvYyBUaXRsZSI6IlBTb0MmdHJhZGU7IDQ6IE1TQ0xQIENBUFNFTlNFJnRyYWRlOyBMaXF1aWQgVG9sZXJhbnQgUHJveGltaXR5IFNlbnNpbmciLCJyaWQiOiJtYXl1ciBjaGFuZGFrIiwiRG9jIHZlcnNpb24iOiIxLjEuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgyMjgiLCJTcGVjIE51bWJlciI6IjAwMi0zODIyOCIsIkRvYyBUaXRsZSI6IlBTb0MmdHJhZGU7IDQ6IE1TQ0xQIENBUFNFTlNFJnRyYWRlOyBMaXF1aWQgVG9sZXJhbnQgUHJveGltaXR5IFNlbnNpbmciLCJyaWQiOiJtYXl1ciBjaGFuZGFrIiwiRG9jIHZlcnNpb24iOiIxLjIuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
 
 
 ## Requirements
@@ -37,7 +37,7 @@ The resulting solution in this implementation can effectively be called as 'Spla
 
 ## Hardware setup
 
-This example uses the board's default configuration. See the kit user guide to ensure that the board is configured correctly.
+This example uses the board's default configuration. See the [kit user guide](www.infineon.com/002-34472) to ensure that the board is configured correctly to use VDDA at 1.8 V
 
 ## Software setup
 
@@ -93,7 +93,7 @@ The following example clones the "[PSoC&trade; 4: MSCLP CAPSENSE&trade; low-powe
    project-creator-cli --board-id CY8CKIT-040T --app-id mtb-example-psoc4-msclp-capsense-lp-proximity --user-app-name CAPSENSE_Low_Power_Proximity_Tuning --target-dir "C:/mtb_projects"
    ```
 
-**Note:** The project-creator-cli tool uses the `git clone` and `make getlibs` commands to fetch the repository and import the required libraries. For details, see the "Project creator tools" section of the [ModusToolbox&trade; user guide](https://www.infineon.com/ModusToolboxUserGuide) (locally available at *{ModusToolbox&trade; install directory}/docs_{version}/mtb_user_guide.pdf*).
+> **Note:** The project-creator-cli tool uses the `git clone` and `make getlibs` commands to fetch the repository and import the required libraries. For details, see the "Project creator tools" section of the [ModusToolbox&trade; user guide](https://www.infineon.com/ModusToolboxUserGuide) (locally available at *{ModusToolbox&trade; install directory}/docs_{version}/mtb_user_guide.pdf*).
 
 To work with a different supported kit later, use the [Library Manager](https://www.infineon.com/ModusToolboxLibraryManager) to choose the BSP for the supported kit. You can invoke the Library Manager GUI tool from the terminal by using the `make library-manager` command or use the Library Manager CLI tool (library-manager-cli) to change the BSP.
 
@@ -152,9 +152,9 @@ The project already has the necessary settings by default, so you can go to [Ope
 
 ## Operation
 
-1. Connect the board to your PC using the provided micro USB cable through the KitProg3 USB connector, as shown in Figure 1:
+1. Connect the board to your PC using the provided micro USB cable through the KitProg3 USB connector, as shown in  **Figure 1**.
 
-   **Figure 1. Connecting the CY8CKIT-040T kit to a computer**
+   **Figure 1. Connecting the CY8CKIT-040T kit to a PC**
 
    <img src="images/psoc4000t_kit_connected.jpg" alt="Figure 1" width="350"/>
 
@@ -169,7 +169,7 @@ The project already has the necessary settings by default, so you can go to [Ope
 
    <details><summary><b>Using CLI</b></summary>
 
-     From the terminal, execute the `make program` command to build and program the application using the default toolchain to the default target. The target and the toolchain are specified manually:
+     From the terminal, execute the `make program` command to build and program the application using the default toolchain to the default target. The target and the toolchain are specified manually.
       ```
       make program TARGET=<BSP> TOOLCHAIN=<toolchain>
       ```
@@ -179,10 +179,19 @@ The project already has the necessary settings by default, so you can go to [Ope
       make program TARGET=CY8CKIT-040T TOOLCHAIN=GCC_ARM
       ```
    </details>
+   <br>
 
 3. After programming, the application starts automatically.
 
-4. To test the application, hover your hand on top of the CAPSENSE&trade; proximity sensor and notice that LED1 turns ON with **GREEN** color and turns OFF when the hand is moved away. In this case, the maximum distance the proximity sensor can sense is 35 mm. It can also detect a touch. When you touch the sensor (outer loop), the LED2 turns ON with the color **BLUE** and turns OFF when you remove the touch.
+   > **Note:** After programming, you see the following error message if debug mode is disabled. This can be ignored or enabling debug solves this error.
+
+   ``` c
+   "Error: Error connecting Dp: Cannot read IDR"
+   ```
+
+4. To test the application, hover a hand on top of the CAPSENSE&trade; proximity sensor and notice that LED1 turns ON with **GREEN** color and turns OFF when the hand is moved away. In this case, the maximum distance the proximity sensor can sense an object is 35 mm. 
+
+   The sensor can also detect a touch. When the sensor is touched, the LED1 turns ON with the color **BLUE**.
 
    **Figure 2. LED1 turns GREEN upon hovering the hand on top of the sensor**
 
@@ -204,16 +213,17 @@ The project already has the necessary settings by default, so you can go to [Ope
 
    **Table 1. LED Indications for Proximity, Touch and Liquid detection**
 
-    Scenario  | LED  | Colour  |
+    Scenario  | LED  | Color  |
    :------------------| :-----| :-----|
     Hand in Proximity  | LED1 |GREEN  |
-    Touch  | LED2 | BLUE |
+    Touch  | LED1 | BLUE |
     Liquid | LED3 | RED |
 
+   <br>
 
 ### Monitor data using CAPSENSE&trade; Tuner
 
-1. Open CAPSENSE&trade; Tuner from the 'BSP Configurators' section in the IDE Quick Panel.
+1. Open CAPSENSE&trade; Tuner from the 'BSP Configurators' section in the IDE **Quick Panel**.
 
    You can also run the CAPSENSE&trade; Tuner application standalone from *{ModusToolbox&trade; install directory}/ModusToolbox&trade;/tools_{version}/capsense-configurator/capsense-tuner*. In this case, after opening the application, select **File** > **Open** and open the *design.cycapsense* file of the respective application, which is present in the *{Application root directory}/bsps/TARGET_APP_\<BSP-NAME>/COMPONENT_BSP_DESIGN_MODUS/* folder.
 
@@ -221,7 +231,7 @@ The project already has the necessary settings by default, so you can go to [Ope
 
 2. Ensure that the kit is in CMSIS-DAP Bulk mode (KitProg3 Status LED is ON and not blinking). See [Firmware-loader](https://github.com/Infineon/Firmware-loader) to learn how to update the firmware and switch modes in KitProg3.
 
-3. In the tuner application, click on the **Tuner communication setup** icon or select **Tools** > **Tuner communication setup**. In the window that appears, select the I2C checkbox under KitProg3 and configure as follows:
+3. In the tuner application, click on the **Tuner communication setup** icon or select **Tools** > **Tuner communication setup**. In the window that appears, select the I2C checkbox under KitProg3 and configure it as follows:
 
    - **I2C address:** 8
    - **Sub-address:** 2 bytes
@@ -271,13 +281,13 @@ The project already has the necessary settings by default, so you can go to [Ope
 
 10. Once noise is acquired, bring your hand near the proximity loop at a distance of around **35 mm** above it and then click **Acquire signal**. Ensure that the hand remains above the proximity loop as long as the signal acquisition is in progress. Observe that the SNR is above 5:1 and the signal count is above 50. If not, repeat signal acquisition by lowering the hand, and thus getting a higher signal.
 
-    The maximum distance the proximity loop can sense is when the SNR is greater than 5:1 for a particular configuration. In the [Tuning procedure](#tuning-procedure) section, you can understand how changing the configuration affects the distance and SNR.
-
-    Figure 14 shows the calculated SNR on this proximity widget.
+    The calculated SNR on this proximity widget is displayed, as Figure 9 shows.
 
     **Figure 11. CAPSENSE&trade; Tuner - SNR measurement: acquire signal**
 
     <img src="images/tuner-acquire-signal.png" alt="Figure 11" width="750"/>
+
+    The maximum distance the proximity sensor can sense is at the distance where the SNR is greater than 5:1. [Tuning procedure](#tuning-procedure) section explains how changing the configuration affects the distance and SNR.
 
 11. To measure the SNR of the low-power sensor (**LowPower0_Sns0**), set the **Finger threshold** to maximum (65535) in **Widget/Sensor Parameters** for the **LowPower0** widget as shown in Figure 12. And set the Proximity threshold and Proximity Touch Threshold to their maximum (65535) values in the Widget/Sensor Parameters of the Proximity0 widget, as shown in Figure 13.
 
@@ -306,6 +316,11 @@ The project already has the necessary settings by default, so you can go to [Ope
 
 Follow the instructions in the **Measure current at different power modes** section of the code example [PSoC™ 4: MSCLP CAPSENSE™ low power](https://github.com/Infineon/mtb-example-psoc4-msclp-capsense-low-power) to measure the current consumption.
 
+# Operation at other voltages
+
+[CY8CKIT-040T kit](https://www.infineon.com/CY8CKIT-040T) supports operating voltages of 1.8 V, 3.3 V, and 5 V. Use voltage selection switch available on top of the kit to set the preferred operating voltage and see the [setup the VDDA supply voltage and Debug mode](#set-up-the-vdda-supply-voltage-and-debug-mode-in-device-configurator) section .
+
+This application functionalities are optimally tuned for 1.8 V. However, you can observe the basic functionalities working across other voltages. It is recommended to tune application at the preferred voltages for optimum performance.
 
 ## Tuning procedure
 
@@ -394,9 +409,9 @@ Do the following to tune the proximity widget:
 
       For example, to get 10 seconds as the maximum time in WoT mode, set **Number of frames in Wake-on-Touch** to **160** for the scan interval set as 63 ms.
 
-      **Note:** For tuning low-power widgets, **Number of frames in Wake-on-Touch** must be less than the  **Maximum number of raw counts in SRAM** based on the number of sensors in WoT mode as follows:
+      **Note:** For tuning low-power widgets, **Number of frames in Wake-on-Touch** must be less than the  **Maximum number of raw counts values in SRAM** based on the number of sensors in WoT mode as follows:
 
-      **Table 2. Maximum number of raw counts in SRAM**
+      **Table 2. Maximum number of raw counts values in SRAM**
 
        Number of low <br> power widgets  | Maximum number of <br> raw counts in SRAM  |
       :---------------------| :-----|
@@ -419,7 +434,7 @@ Do the following to tune the proximity widget:
 
       **Note:** Each tab has a **Restore Defaults** button to restore the parameters of that tab to their default values.
 
-8. Go to the **CSD settings** tab and do the following changes:
+7. Go to the **CSD settings** tab and make the following changes:
 
    1. Set **Inactive sensor connection** as **Shield**.
 
@@ -429,11 +444,11 @@ Do the following to tune the proximity widget:
 
       Setting the shield to active: The driven shield is a signal that replicates the sensor-switching signal. This minimizes the signal due to the liquid droplets falling on the sensor. 
 
-   3. Set **Total shield count** as **10** (Enabling all the inactive sensors as shield during CSD sensor scan).
+   3. Set **Total shield count** as **6** (Enabling all the inactive sensors as shield during CSD sensor scan).
 
    4. Select **Enable CDAC auto-calibration** and **Enable compensation CDAC**.
 
-   5. Set **Raw count calibration level (%)** to **85**.
+   5. Set **Raw count calibration level (%)** to **70**.
 
    6. Select **Enable CDAC dither**.
 
@@ -495,7 +510,7 @@ Do the following to tune the proximity widget:
 
    - **Finger threshold:** 65535
 
-      Finger threshold is set to the maximum to avoid the waking up of the device from WoT mode due to touch detection so that you can acquire signal for SNR measurement.
+      Finger threshold is set to the maximum to avoid the waking the device up from WoT mode due to touch detection so that you can acquire signal for SNR measurement.
 
    - **Noise threshold:** 10
 
@@ -579,35 +594,36 @@ The CAPSENSE&trade; middleware provide Built In Self Test (BIST) API's to measur
 
 The steps to measure the C<sub>p</sub>/C<sub>m</sub> using BIST are as follows.
 
-   1.	Open CAPSENSE&trade; Configurator from Quick Panel and enable BIST library.
-
+   1.	Open CAPSENSE&trade; Configurator from **Quick Panel** and enable BIST library.
+   
    **Figure 26. Enabling self test library**
    
    <img src="images/bist_measurement.png" alt="Figure 26" width=700>
 
+   <br>
 
-   2.	Enable  ENABLE_BIST_CP_MEASUREMENT  macro in main.c as follows,which enable Cp measurement functionality.
-        ``` 
-         #define    ENABLE_BIST_CP_MEASUREMENT (1u)
-        ```
-   3.	Get the capacitance(C<sub>p</sub>/C<sub>m</sub>) by following these steps:
+   2.	Get the capacitance(C<sub>p</sub>/C<sub>m</sub>) by following these steps:
         - Add breakpoint at the function call "measure_sensor_capacitance()" function in main.c
         - Run the application in debug mode
-        - Click Step over button once break point hits
-        - Add array variable sensor_capacitance to Expressions view tab, which holds the measured Cp values of sensors configured
+        - Click **Step over** button once break point hits
+        - Add array variable 'sensor_capacitance' to **Expressions view** tab, which holds the measured Cp values of sensors configured
 
    **Figure 27. Measure C<sub>p</sub>/C<sub>m</sub> using BIST**
 
    <img src="images/bist_break_point.png" alt="Figure 27" width=700/>
+
+   <br>
   
-   4.	Index of sensor_capacitance array matches with the sensor configuration in CAPSENSE&trade; Configurator as shown in Figure 29.
+   3.	Index of sensor_capacitance array matches with the sensor configuration in CAPSENSE&trade; Configurator as shown in Figure 29.
 
    **Figure 28. Cp array index alignment**
 
    <img src="images/cp_alignment.png" alt="Figure 28" width=700/>
 
-   5. Refer to [CAPSENSE&trade; library and documents](https://github.com/Infineon/capsense) for more details about BIST.
-   6. Keep this feature disabled in CAPSENSE&trade; Configurator, if not used in application.
+   <br>
+
+   4. Refer to [CAPSENSE&trade; library and documents](https://github.com/Infineon/capsense) for more details about BIST.
+   5. Keep this feature disabled in CAPSENSE&trade; Configurator, if not used in application.
 
 ### **CDAC Dither scale setting**
 
@@ -615,7 +631,7 @@ MSCLP uses CDAC dithering to reduce flat spots. Select the optimal dither scale 
 
 See the following table for general recommended values of Dither scale.
 
-   #### **Table 3. Dither Scale Recommendation for CSD sensors**
+   **Table 3. Dither scale recommendation for CSD sensors**
    
    Sensor C<sub>p</sub> Range | CDAC_Dither_scale
    :---: | :---:  
@@ -686,7 +702,7 @@ Refer to **Figure 30** and **Figure 31** for waveforms observed on the shield. *
       Parameter | Value |
       :-------- |:-----------|
       Modulator clock divider | 2 |
-      Sense clock divider | 32 |
+      Sense clock divider | 40 |
 
 ### Stage 4: Fine-tune for required SNR, power, and refresh rate
 -------------------------
@@ -706,9 +722,14 @@ The steps for optimizing these parameters are as follows:
 
    Calculate the decimation rate of the CIC2 filter using **Equation 1**. The resolution increases with an increase in the decimation rate; therefore, set the maximum decimation rate indicated by the equation.
 
-      **Equation 1. Decimation rate**
+      **Equation 1. Recommended Decimation Rate**
 
-      ![](images/decimation-equation.png)
+      $$DecimationRate = min\left(\frac {SnsClkDiv * N_{sub}}{3},255\right) $$
+
+      Where,
+      
+      - $N_{sub}$ is Number of Sub-Conversions
+      - $SnsClkDiv$ is Sense Clock Divider value
 
 4.  Load the parameters to the device and measure SNR as mentioned in Steps 10 and 11 in the [Operation](#operation) section. 
    
@@ -734,7 +755,7 @@ The steps for optimizing these parameters are as follows:
 
    b. Click Save and close CAPSENSE&trade; Configurator. Program the device to update the filter settings.
 
-   **Note** : Increasing number of sub-conversions and enabling filters increases the scan time which in turn decreases the responsiveness of the sensor. Increase in scan time also increases the power consumption. Therefore, the number of sub-conversions and filter configuration must be optimized to achieve a balance between SNR, power, and refresh rate. 
+   >**Note** : Increasing number of sub-conversions and enabling filters increases the scan time which in turn decreases the responsiveness of the sensor. Increase in scan time also increases the power consumption. Therefore, the number of sub-conversions and filter configuration must be optimized to achieve a balance between SNR, power, and refresh rate. 
 
 ### Stage 5: Tune threshold parameters
 -------------------------
@@ -804,7 +825,7 @@ Various thresholds, relative to the signal, need to be set for each sensor. Do t
 
    Parameter | Proximity0 | LowPower0|
    :-------- |:-----------|:---------
-   Proximity signal | 750 |41 |
+   Proximity signal | 600 |41 |
    Touch signal | 8960 | NA |
    Proximity threshold | 600 |33|
    Touch threshold | 7168 |NA |
@@ -831,7 +852,7 @@ Refer to the algorithm implemented in the code example.
    
    2. Measure the signal of Proximity sensor (Proximity0_Sns0) as per step 11 mentioned in the [Monitor data using CAPSENSE&trade; Tuner](#monitor-data-using-capsense™-tuner) section.
 
-   3. Se the **Proximity threshold** three times that of the signal when water droplets are present on the Proximity sensor
+   3. Se the **Proximity threshold** three times that of the signal when water droplets are present on the Proximity sensor. In this case, it is set to 750.
 
 
 2. To tune the Csx widget for liquid tolerance, follow the below steps:
@@ -867,9 +888,9 @@ Refer to the algorithm implemented in the code example.
 
       **Table 7. CSX Guard sensor threshold parameters for liquid tolerance for CY8CKIT-040T**
 
-      Parameter | Count |
+      Parameter | Raw Count value |
       :-------- |:-----------|
-      Number of sub conversions | 2367 |
+      Number of sub conversions | 255 |
       Touch signal | 10000 |
       Finger threshold | 10000 |
       Noise threshold |200|
@@ -878,9 +899,9 @@ Refer to the algorithm implemented in the code example.
       Low baseline reset | 65535 |
       Hysteresis | 30 |
       ON debounce | 3|
-      Liquid active threshold | 250 |
+      Liquid active threshold | 300 |
 
-      **Note:** Liquid active threshold is mention in **main.c** as a user macro **LIQUID_GUARD_NEG_RAWCOUNT_THRESHOLD**
+      **Note:** Liquid active threshold is mentioned in **main.c** as a user macro **LIQUID_GUARD_NEG_RAWCOUNT_THRESHOLD**
 
 <br>
 
@@ -928,8 +949,8 @@ Follow these steps to measure the process time of the blocks of application code
             alr_processing_time=stop_runtime_measurement();
          #endif
       ``` 
-4. Read the variables by adding them into Expressions view tab.
-5. Update related macros with above measured processing times in main.c as follows,
+4. Read the variables by adding them into **Expressions view** tab.
+5. Update related macros with the earlier measured processing times in main.c as follows:
       ```
       #define ACTIVE_MODE_PROCESS_TIME     (xx)
 
@@ -937,16 +958,53 @@ Follow these steps to measure the process time of the blocks of application code
       ```
 ### **Scan time Measurement**
 --------------------
-Scan time is also part of calculating refresh rate of power modes and can be calculated as follows,
-Scan time of widget
+Scan time is also required for calculating the refresh rate of the application power modes. The total scan time of all the widgets in this code example is 10 µs.
 
-**Equation 2: Scan time calculation of a widget**
+It can be calculated as follows:
 
-   <img src="images/scan_time-equation.png" alt="Equation 2" width=400/>
+The scan time includes the MSCLP initialization time, Cmod, and the total sub-conversions of the sensor. 
 
-A fixed duration of 30µs is added, which is the stanard initialization time taken before each scan.
+To control the Cmod initialization sequence, set the "Enable Coarse initialization bypass" configurator option as listed in the following table:
 
-Udpate following macros in main.c using the scan time calculated. The value remains the same for both macros.
+Enable coarse initialization bypass | Behaviour
+:-------------|:---------
+TRUE|Cmod initialization happens only once before scanning the sensors of the widget
+FALSE| Cmod initialization happens before scanning each sensor of the widget
+
+Use the following equations to measure the widgets scan time based on coarse initialization bypass options selected: 
+
+**Equation 2. Scan time calculation of a widget with coarse initialization bypass enabled**
+
+$$ScanTime_{widget} = \left(\sum_{sensor=1}^n \left((N_{init} + N_{sub}) * \frac {SnsClkDiv}{F_{mod}}\right)\right) +k $$
+
+
+**Equation 3. Scan time calculation of a widget with coarse initialization bypass disabled**
+
+$$ScanTime_{widget} = \sum_{sensor=1}^n \left((N_{init} + N_{sub}) * \frac {SnsClkDiv}{F_{mod}} +k \right) $$
+
+
+where,
+
+- $n$ - Total number of sensors in the widget
+
+- $N_{sub}$ - Number of sub-conversions
+
+- $N_{init}$ - Number of init sub-conversions
+
+- $SnsClkDiv$ - Sense clock divider
+
+- $F_{mod}$ - Modulator clock frequency
+
+- $k$ - Measured Initialization time (MSCLP+Cmod).
+
+
+This value of '$k$' measured for this application is ~9 µs. It remains constant for all widgets, and can be measured using oscilloscope as shown below;
+
+ **Figure 39. 'k' value measurement**
+
+<img src="images/scantime_wave.png" alt="Figure 39"/>
+
+Update following macros in *main.c* using the scan time calculated. The value remains the same for both macros for this application.
 
 ```
 #define ACTIVE_MODE_FRAME_SCAN_TIME     (xx)
@@ -962,7 +1020,9 @@ Udpate following macros in main.c using the scan time calculated. The value rema
 
 You can debug the example to step through the code. In the IDE, use the **\<Application Name> Debug (KitProg3_MiniProg4)** configuration in the **Quick Panel**. For details, see the "Program and debug" section in the [Eclipse IDE for ModusToolbox&trade; user guide](https://www.infineon.com/MTBEclipseIDEUserGuide).
 
-<br>
+By default, the debug option is disabled in the device configurator. To enable the debug option, see the [Setup VDD and Debug mode](#set-up-the-vdda-supply-voltage-and-debug-mode-in-device-configurator) section. To achieve low power consumption, it is recommended to disable it. 
+
+   <br>
 
 ## Design and implementation
 
@@ -992,9 +1052,9 @@ The firmware is designed to support the following application states:
 - Wake-on-touch state
 - Liquid active state
 
-**Figure 39. State machine showing different CAPSENSE&trade; states**
+**Figure 40. State machine showing different CAPSENSE&trade; states**
 
-<img src="images/psoc_4000t_simple_state_machine.png" alt="Figure 39" width="400"/>
+<img src="images/psoc_4000t_simple_state_machine.png" alt="Figure 40" width="400"/>
 
 The firmware state machine and the operation of the device in four different states are explained in the following steps:
 
@@ -1016,15 +1076,15 @@ The firmware state machine and the operation of the device in four different sta
 
 4. Enters the Wake-on-touch state when there is no touch or object in proximity detected in Active low-refresh rate state for a timeout period. In this state, the CPU is set to deep sleep, and is not involved in CAPSENSE&trade; operation. This is the lowest power state of the device. In the Wake-on-touch state, the CAPSENSE&trade; hardware executes the scanning of the selected sensors called "low-power widgets" and processes the scan data for these widgets. If touch is detected, the CAPSENSE&trade; block wakes up the CPU and the device enters to the Active state.
 
-5. Enters the 'Liquid Active' state when the guard sensors is activated. Guard sensors are used to detect the presence of liquid on the surface. When the CY8CKIT-040T kit is dipped inside liquid, or liquid is sprayed on the surface, device enters into the 'Liquid Active' state. In this state, no other sensors other than the guard sensor is scanned. This state restricts normal scan operation and avoids any false touch by deactivating the scan operation of active sensors. When the liquid is removed from the surface, CAPSENSE&trade; system returns to the Active state.
+5. Enters the 'Liquid Active' state when the guard sensors is activated. Guard sensors are used to detect the presence of liquid on the surface. When the CY8CKIT-040T kit is dipped inside liquid, or liquid is sprayed on the surface, device enters into the 'Liquid Active' state. In this state, no other sensors other than the guard sensor is scanned. This state restricts normal scan operation and avoids any false touch by deactivating the scan operation of active sensors. When the liquid is removed from the surface, system returns to the Active state.
 
-There are three onboard RGB LEDs connected to the SPI MOSI pin of the device. These LEDs form a daisy-chain connection and communicate over the serial interface. The LEDs accept a 32-bit input code, with three bytes for red, green, and blue colors, five bits for global brightness, and three blank '1' bits. See the [LED datasheet](https://media.digikey.com/pdf/Data%20Sheets/Everlight%20PDFs/12-23C_RSGHBHW-5V01_2C_Rev4_12-17-18.pdf) for more details.
+There are three onboard RGB LEDs connected to the SPI MOSI pin of the device. These LEDs form a daisy-chain connection and communicate over the serial interface. See the [LED datasheet](https://media.digikey.com/pdf/Data%20Sheets/Everlight%20PDFs/12-23C_RSGHBHW-5V01_2C_Rev4_12-17-18.pdf) for more details.
 
 ### Firmware flow
 
-**Figure 40. Firmware flowchart**
+**Figure 41. Firmware flowchart**
 
-<img src="images/firmware-flowchart.png" alt="Figure 40" width="1100"/>
+<img src="images/firmware-flowchart.png" alt="Figure 41" width="1100"/>
 
 <br>
 
@@ -1034,27 +1094,27 @@ There are three onboard RGB LEDs connected to the SPI MOSI pin of the device. Th
 
 2. Go to the **System** tab. Select the **Power** resource, and set the VDDA value under **Operating conditions** as follows:
 
-   **Figure 41. Setting the VDDA supply in the System tab of Device Configurator**
+   **Figure 42. Setting the VDDA supply in the System tab of Device Configurator**
 
-   <img src="images/vdda-settings.png" alt="Figure 41"/>
+   <img src="images/vdda-settings.png" alt="Figure 42"/>
 
-3. By default, SWD pins are active in all device power modes. Disable debug mode to disable SWD pins and thereby reduce the power consumption as follows:
+3. By default, the debug mode is disabled for this application to reduce power consumption. Enable the debug mode to enable the SWD pins as follows:
 
-   **Figure 42. Disable Debug mode in the System tab of Device Configurator**
+   ##### **Figure 43. Enable debug mode in the System tab of Device Configurator**
 
-   <img src="images/disable-swd.png" alt="Figure 42"/>
+   <img src="images/enable_debug.png" alt="Figure 43"/>
 
 <br>
 
 ### Resources and settings
 
-**Figure 43. EZI2C settings**
+**Figure 44. EZI2C settings**
 
-<img src="images/ezi2c-config.png" alt="Figure 43" width="800"/>
+<img src="images/ezi2c-config.png" alt="Figure 44" width="800"/>
 
-**Figure 44 SPI settings**
+**Figure 45 SPI settings**
 
-<img src="images/spi-config.png" alt="Figure 44" width="800"/>
+<img src="images/spi-config.png" alt="Figure 45" width="800"/>
 
 **Table 8. Application resources**
 
@@ -1096,6 +1156,7 @@ Document title: *CE238228* – *PSoC&trade; 4: MSCLP CAPSENSE&trade; liquid tole
  ------- | ---------------------
  1.0.0   | New code example
  1.1.0   | Minor fixes
+ 1.2.0   | Scan time calculation updates and debug disabled by default
 
  <br>
 
