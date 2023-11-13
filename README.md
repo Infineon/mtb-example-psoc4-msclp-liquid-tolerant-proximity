@@ -15,7 +15,7 @@ The resulting solution in this implementation can effectively be called as 'Spla
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc4-msclp-liquid-tolerant-proximity)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgyMjgiLCJTcGVjIE51bWJlciI6IjAwMi0zODIyOCIsIkRvYyBUaXRsZSI6IlBTb0MmdHJhZGU7IDQ6IE1TQ0xQIENBUFNFTlNFJnRyYWRlOyBMaXF1aWQgVG9sZXJhbnQgUHJveGltaXR5IFNlbnNpbmciLCJyaWQiOiJtYXl1ciBjaGFuZGFrIiwiRG9jIHZlcnNpb24iOiIxLjIuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgyMjgiLCJTcGVjIE51bWJlciI6IjAwMi0zODIyOCIsIkRvYyBUaXRsZSI6IlBTb0MmdHJhZGU7IDQ6IE1TQ0xQIENBUFNFTlNFJnRyYWRlOyBMaXF1aWQgVG9sZXJhbnQgUHJveGltaXR5IFNlbnNpbmciLCJyaWQiOiJtYXl1ciBjaGFuZGFrIiwiRG9jIHZlcnNpb24iOiIxLjIuMSIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJJQ1ciLCJEb2MgRmFtaWx5IjoiUFNPQyJ9)
 
 
 ## Requirements
@@ -998,7 +998,7 @@ where,
 - $k$ - Measured Initialization time (MSCLP+Cmod).
 
 
-This value of '$k$' measured for this application is ~9 µs. It remains constant for all widgets, and can be measured using oscilloscope as shown below;
+This value of 'k' measured for this application is ~9 µs. It remains constant for all widgets, and can be measured using oscilloscope as shown below;
 
  **Figure 39. 'k' value measurement**
 
@@ -1157,6 +1157,7 @@ Document title: *CE238228* – *PSoC&trade; 4: MSCLP CAPSENSE&trade; liquid tole
  1.0.0   | New code example
  1.1.0   | Minor fixes
  1.2.0   | Scan time calculation updates and debug disabled by default
+ 1.2.1   | Minor fixes
 
  <br>
 
